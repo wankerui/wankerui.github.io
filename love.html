@@ -1,11 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>canvas爱心</title>
-
+	<title></title>
+</head>
 <style>
-html, body {
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  html, body {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -15,13 +18,19 @@ canvas {
   position: absolute;
   width: 100%;
   height: 100%;
-}</style>
-</head>
+}
+.aa{
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  color: #ccc
+}
+</style>
 <body>
-
-<canvas id="pinkboard"></canvas>
-
-<script>
+    <canvas id="pinkboard"></canvas>
+ 
+    <script>
+       
 /*
  * Settings
  */
@@ -34,12 +43,12 @@ var settings = {
     size:      30, // particle size in pixels
   },
 };
-
+ 
 /*
  * RequestAnimationFrame polyfill by Erik M?ller
  */
 (function(){var b=0;var c=["ms","moz","webkit","o"];for(var a=0;a<c.length&&!window.requestAnimationFrame;++a){window.requestAnimationFrame=window[c[a]+"RequestAnimationFrame"];window.cancelAnimationFrame=window[c[a]+"CancelAnimationFrame"]||window[c[a]+"CancelRequestAnimationFrame"]}if(!window.requestAnimationFrame){window.requestAnimationFrame=function(h,e){var d=new Date().getTime();var f=Math.max(0,16-(d-b));var g=window.setTimeout(function(){h(d+f)},f);b=d+f;return g}}if(!window.cancelAnimationFrame){window.cancelAnimationFrame=function(d){clearTimeout(d)}}}());
-
+ 
 /*
  * Point class
  */
@@ -67,11 +76,10 @@ var Point = (function() {
   };
   return Point;
 })();
-
+ 
 /*
  * Particle class
  */
-
 var Particle = (function() {
   function Particle() {
     this.position = new Point();
@@ -105,7 +113,7 @@ var Particle = (function() {
   };
   return Particle;
 })();
-
+ 
 /*
  * ParticlePool class
  */
@@ -168,7 +176,7 @@ var ParticlePool = (function() {
   };
   return ParticlePool;
 })();
-
+ 
 /*
  * Putting it all together
  */
@@ -243,13 +251,6 @@ var ParticlePool = (function() {
     // update and draw particles
     particles.update(deltaTime);
     particles.draw(context, image);
-
-    // draw text
-    context.globalAlpha = 1; // reset alpha
-    context.fillStyle = 'white';
-    context.font = '48px sans-serif';
-    context.textAlign = 'center';
-    context.fillText('little bowl', canvas.width / 2, canvas.height / 2);
   }
   
   // handle (re-)sizing of the canvas
@@ -259,15 +260,16 @@ var ParticlePool = (function() {
   }
   window.onresize = onResize;
   
- 
   // delay rendering bootstrap
   setTimeout(function() {
     onResize();
     render();
   }, 10);
-})(document.getElementById('pinkboard'));</script>
-
+})(document.getElementById('pinkboard'));
+ 
+ 
+ 
+ 
+    </script>
 </body>
 </html>
-
-
